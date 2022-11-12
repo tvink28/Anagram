@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/curvedtoolbar"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            tools:ignore="TextContrastCheck"
+            tools:layout_editor_absoluteX="187dp"
+            tools:layout_editor_absoluteY="18dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/input_1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginHorizontal="30dp"
+        android:fontFamily="@font/poppins"
+        android:layout_marginTop="120dp"
+        android:gravity="center"
+        android:background="@drawable/input_bg"
+        android:hint="@string/anagram_hint"
+        android:inputType="textMultiLine"
+        android:textSize="14sp"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/input_2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/input_1"
+        android:fontFamily="@font/poppins"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:background="@drawable/input_bg"
+        android:hint="@string/filter_anagram_hint"
+        android:inputType="textMultiLine"
+        android:textSize="14sp"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/recover_pas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_2"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center_horizontal"
+        android:text="@string/recover_pas"
+        android:textSize="16sp" />
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btn_convert"
+        android:layout_height="60dp"
+        android:text="@string/btn_txt"
+        android:layout_below="@id/recover_pas"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/status_bar"
+
+
+        />
+
+
+</RelativeLayout>

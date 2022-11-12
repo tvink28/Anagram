@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tast 1</string>
+    <string name="anagram_hint">Enter text for anagram</string>
+    <string name="filter_anagram_hint">Enter symbols to ignore</string>
+    <string name="recover_pas">Here must be your anagram</string>
+    <string name="btn_txt">convert</string>
+</resources>
