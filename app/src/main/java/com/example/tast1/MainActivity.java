@@ -1,6 +1,6 @@
 package com.example.tast1;
 
-import static com.example.tast1.Reverse.reverse;
+import static com.example.tast1.Reverse.reverseWord;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -19,11 +19,32 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText editText1, editText2;
-    private TextView textView;
+    private EditText textForAnagram, filterAnagram;
+    private TextView viewAnagram;
     //private Button btn_convert;
 
 
+    //editText1.addTextChangedListener(this)
+    private final TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String str = textForAnagram.getText().toString();
+            //Reverse.reverseWord(str);
+            viewAnagram.setText(Reverse.reverseWord(str));
+            //textView.setText(charSequence);
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+
+        }
+    };
 
 
 
@@ -36,35 +57,19 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         //btn_convert = findViewById(R.id.btn_convert);
-        editText1 = findViewById(R.id.input_1);
-        editText2 = findViewById(R.id.input_2);
-        textView = findViewById(R.id.recover_pas);
+        textForAnagram = findViewById(R.id.text_for_anagram);
+        filterAnagram = findViewById(R.id.filter_anagram);
+        viewAnagram = findViewById(R.id.text_anagram);
 
 
 
-        String str = editText1.getText().toString();
-        char[] charArray = str.toCharArray();
-        reverse(charArray);
-        String revStr = new String(charArray);
+
+        //Reverse.reverseWord(editText1.getText().toString());
+        textForAnagram.addTextChangedListener(textWatcher);
 
 
-            editText1.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    textView.setText(charSequence);
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-
-
-                }
-            });
         }
     }

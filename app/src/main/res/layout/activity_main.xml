@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -33,58 +33,64 @@
     </androidx.appcompat.widget.Toolbar>
 
     <EditText
-        android:id="@+id/input_1"
+        android:id="@+id/text_for_anagram"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_below="@+id/toolbar"
         android:layout_marginHorizontal="30dp"
-        android:fontFamily="@font/poppins"
-        android:layout_marginTop="120dp"
-        android:gravity="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="30dp"
         android:background="@drawable/input_bg"
-        android:hint="@string/anagram_hint"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:hint="@string/text_for_anagram_hint"
+        android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:textSize="14sp"
-        android:importantForAutofill="no" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/input_2"
+        android:id="@+id/filter_anagram"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_below="@+id/input_1"
-        android:fontFamily="@font/poppins"
+        android:layout_below="@+id/text_for_anagram"
         android:layout_marginHorizontal="30dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
-        android:gravity="center"
+        android:layout_marginEnd="30dp"
         android:background="@drawable/input_bg"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
         android:hint="@string/filter_anagram_hint"
+        android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:textSize="14sp"
-        android:importantForAutofill="no" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_for_anagram"
+        tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/recover_pas"
+        android:id="@+id/text_anagram"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/input_2"
+        android:layout_below="@id/filter_anagram"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="29dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center_horizontal"
-        android:text="@string/recover_pas"
-        android:textSize="16sp" />
-    <Button
-        android:layout_width="match_parent"
-        android:id="@+id/btn_convert"
-        android:layout_height="60dp"
-        android:text="@string/btn_txt"
-        android:layout_below="@id/recover_pas"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/status_bar"
+        android:hint="@string/anagram_result"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filter_anagram"
+        tools:ignore="MissingConstraints" />
 
 
-        />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
