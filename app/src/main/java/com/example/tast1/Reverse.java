@@ -4,17 +4,43 @@ import android.view.View;
 import android.widget.EditText;
 
 public class Reverse {
-        public static String reverseWord(String str){
-        String[] words =str.split("\\s");
-        String reverseWord="";
-        for(String w:words){
-            StringBuilder sb=new StringBuilder(w);
-            sb.reverse();
-            reverseWord+=sb.toString()+" ";
+    public static String reverseWord(String str) {
+        String[] words = str.split("\\s");
+        for (String s:words){
+            char[] chars = s.toCharArray();
+            int l = 0;
+            int r = s.length() - 1;
+
+            while(l < r) {
+                char firstCh = str.charAt(l);
+                char lastCh = str.charAt(r);
+
+                if (isDigit(firstCh)) {
+                    l++;
+                } else if (isDigit(lastCh)) {
+                    r--;
+                } else {
+                    char temp = chars[l];
+                    chars[l] = chars[r];
+                    chars[r] = temp;
+                    l++;
+                    r--;
+                }
+            }
         }
-        return reverseWord.trim();
+        return reverseWord(str);
+    }
+    private static boolean isDigit(char ch) {
+        if (ch >= '0' && ch <= '9') {
+            return true;
+        }
+
+        return false;
     }
 }
+
+
+
 
 //    public static String reverseWord(String str) {
 //        String[] words = str.split(" ");
@@ -63,3 +89,18 @@ public class Reverse {
 //        }
 //    }
 
+
+
+
+//public class Reverse {
+//    public static String reverseWord(String str){
+//        String[] words =str.split("\\s");
+//        String reverseWord="";
+//        for(String w:words){
+//            StringBuilder sb=new StringBuilder(w);
+//            sb.reverse();
+//            reverseWord+=sb.toString()+" ";
+//        }
+//        return reverseWord.trim();
+//    }
+//}
