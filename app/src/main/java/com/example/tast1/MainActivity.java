@@ -1,6 +1,6 @@
 package com.example.tast1;
 
-import static com.example.tast1.Reverse.reverseWord;
+import static com.example.tast1.Reverse.makeAnagram;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView viewAnagram;
     //private Button btn_convert;
 
+    public EditText getFilterAnagram() {
+        return filterAnagram;
+    }
 
     //editText1.addTextChangedListener(this)
     private final TextWatcher textWatcher = new TextWatcher() {
@@ -33,9 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            String str = textForAnagram.getText().toString();
+            String text = textForAnagram.getText().toString();
+            String filter = filterAnagram.getText().toString();
             //Reverse.reverseWord(str);
-            viewAnagram.setText(Reverse.reverseWord(str));
+            viewAnagram.setText(Reverse.makeAnagram(text, filter));
+
             //textView.setText(charSequence);
         }
 
