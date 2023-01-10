@@ -1,10 +1,6 @@
 package com.example.tast1;
 
-import android.view.View;
-import android.widget.EditText;
 
-import java.util.Arrays;
-import java.util.Collections;
 
 public class Reverse extends MainActivity{
 
@@ -15,13 +11,12 @@ public class Reverse extends MainActivity{
 
 
             String[] words = text.split("\\s");
-            String makeAnagram = "";
+            StringBuilder makeAnagram = new StringBuilder();
             for (String word : words) {
-                StringBuilder stringBuilder = new StringBuilder(filter(word,filter));
-                makeAnagram += stringBuilder.toString() + " ";
+                makeAnagram.append(filter(word, filter)).append(" ");
             }
 
-            return makeAnagram.trim();
+            return makeAnagram.toString().trim();
 
     }
 
@@ -35,19 +30,16 @@ public class Reverse extends MainActivity{
         char[] charsText = text.toCharArray();
         int l = 0;
 
-       // int lenFilter = filter.length() - 1;
-        char[] charsFilter = filter.toCharArray();
-       // int j = 0;
-
         if (filter.isEmpty()) {
+
 
             while (l < r) {
                 char firstCh = text.charAt(l);
                 char lastCh = text.charAt(r);
 
-                if (!isAlpha(firstCh)) {
+                if (isAlpha(firstCh)) {
                     l++;
-                } else if (!isAlpha(lastCh)) {
+                } else if (isAlpha(lastCh)) {
                     r--;
                 } else {
                     char temp = charsText[l];
@@ -58,60 +50,32 @@ public class Reverse extends MainActivity{
                 }
             }
 
+
         } else {
+                while (l<r) {
+                        if (filter.contains(String.valueOf(text.charAt(l)))) {
+                            l++;
+                        } else if (filter.contains(String.valueOf(text.charAt(r)))) {
+                            r--;
+                        } else {
+                            char temp = charsText[l];
+                            charsText[l] = charsText[r];
+                            charsText[r] = temp;
+                            l++;
+                            r--;
 
-            for (int j = 0; j < filter.length(); j++) {
-
-                 while (l < r) {
-
-                     char firstCh = text.charAt(l);
-                     char lastCh = text.charAt(r);
-
-//                     char firstFilter = filter.charAt(j);
-//                     char lastFilter = filter.charAt(lenFilter);
-
-                     if (firstCh == charsFilter[j]) {
-                         l++;
-                     }
-                     else if (lastCh == charsFilter[j]) {
-                         r--;
-                     } else {
-                         char temp = charsText[l];
-                         charsText[l] = charsText[r];
-                         charsText[r] = temp;
-                         l++;
-                         r--;
-
-                     }
-
-                 }
-
-            }
-
+                        }
+                }
         }
-
-
-
         return String.copyValueOf(charsText);
     }
 
 
 
     private static boolean isAlpha(char ch) {
-        if (ch >= 'a' && ch <= 'z'
-                || ch >= 'A' && ch <= 'Z'){
-            return true;
-        }
-        return false;
+        return (ch < 'a' || ch > 'z')
+                && (ch < 'A' || ch > 'Z');
     }
-
-//    private static boolean isDigit(char ch) {
-//        if (ch >= '0' && ch <= '9') {
-//            return true;
-//        }
-//        return false;
-//    }
-
 }
 
 
