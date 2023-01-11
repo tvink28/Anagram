@@ -1,27 +1,20 @@
 package com.example.tast1;
 
+public class Reverse extends MainActivity {
 
 
-public class Reverse extends MainActivity{
+    public static String makeAnagram(String text, String filter) {
 
 
+        String[] words = text.split("\\s");
+        StringBuilder makeAnagram = new StringBuilder();
+        for (String word : words) {
+            makeAnagram.append(filter(word, filter)).append(" ");
+        }
 
-
-    public static String makeAnagram(String text, String filter){
-
-
-            String[] words = text.split("\\s");
-            StringBuilder makeAnagram = new StringBuilder();
-            for (String word : words) {
-                makeAnagram.append(filter(word, filter)).append(" ");
-            }
-
-            return makeAnagram.toString().trim();
+        return makeAnagram.toString().trim();
 
     }
-
-
-
 
 
     public static String filter(String text, String filter) {
@@ -31,15 +24,10 @@ public class Reverse extends MainActivity{
         int l = 0;
 
         if (filter.isEmpty()) {
-
-
             while (l < r) {
-                char firstCh = text.charAt(l);
-                char lastCh = text.charAt(r);
-
-                if (isAlpha(firstCh)) {
+                if (isAlpha(text.charAt(l))) {
                     l++;
-                } else if (isAlpha(lastCh)) {
+                } else if (isAlpha(text.charAt(r))) {
                     r--;
                 } else {
                     char temp = charsText[l];
@@ -49,27 +37,27 @@ public class Reverse extends MainActivity{
                     r--;
                 }
             }
-
-
         } else {
-                while (l<r) {
-                        if (filter.contains(String.valueOf(text.charAt(l)))) {
-                            l++;
-                        } else if (filter.contains(String.valueOf(text.charAt(r)))) {
-                            r--;
-                        } else {
-                            char temp = charsText[l];
-                            charsText[l] = charsText[r];
-                            charsText[r] = temp;
-                            l++;
-                            r--;
-
-                        }
+            while (l < r) {
+                if (isFilter(filter, text.charAt(l))) {
+                    l++;
+                } else if (isFilter(filter, text.charAt(r))) {
+                    r--;
+                } else {
+                    char temp = charsText[l];
+                    charsText[l] = charsText[r];
+                    charsText[r] = temp;
+                    l++;
+                    r--;
                 }
+            }
         }
-        return String.copyValueOf(charsText);
+        return new String(charsText);
     }
 
+    private static boolean isFilter(String filter, char ch) {
+        return (filter.indexOf(ch) != -1);
+    }
 
 
     private static boolean isAlpha(char ch) {
@@ -77,69 +65,3 @@ public class Reverse extends MainActivity{
                 && (ch < 'A' || ch > 'Z');
     }
 }
-
-
-
-
-//    public static String reverseWord(String str) {
-//        String[] words = str.split(" ");
-//        String reverseWord = "";
-//        int r = words.length - 1, l = 0;
-//        while (l < r) {
-//            if (!Character.isAlphabetic(l))
-//                l++;
-//            else if (!Character.isAlphabetic(r))
-//                r--;
-//            else {
-//                for (String w : words) {
-//                    StringBuilder sb = new StringBuilder(w);
-//                    sb.reverse();
-//                    reverseWord += sb.toString()+" ";
-//
-//                }
-//
-//            }
-//
-//        }
-//        return reverseWord.trim();
-//    }
-//}
-
-
-
-
-
-
-//    public static void reverse(char[] str) {
-//        int r = str.length - 1, l = 0;
-//
-//        while (l < r) {
-//            if (!Character.isAlphabetic(str[l]))
-//                l++;
-//            else if (!Character.isAlphabetic(str[r]))
-//                r--;
-//            else {
-//                char tmp = str[l];
-//                str[l] = str[r];
-//                str[r] = tmp;
-//                l++;
-//                r--;
-//            }
-//        }
-//    }
-
-
-
-
-//public class Reverse {
-//    public static String reverseWord(String str){
-//        String[] words =str.split("\\s");
-//        String reverseWord="";
-//        for(String w:words){
-//            StringBuilder sb=new StringBuilder(w);
-//            sb.reverse();
-//            reverseWord+=sb.toString()+" ";
-//        }
-//        return reverseWord.trim();
-//    }
-//}
