@@ -25,9 +25,9 @@ public class Reverse extends MainActivity {
 
         if (filter.isEmpty()) {
             while (l < r) {
-                if (isAlpha(text.charAt(l))) {
+                if (!Character.isLetter(charsText[l])) {
                     l++;
-                } else if (isAlpha(text.charAt(r))) {
+                } else if (!Character.isLetter(charsText[r])) {
                     r--;
                 } else {
                     char temp = charsText[l];
@@ -57,11 +57,5 @@ public class Reverse extends MainActivity {
 
     private static boolean isFilter(String filter, char ch) {
         return (filter.indexOf(ch) != -1);
-    }
-
-
-    private static boolean isAlpha(char ch) {
-        return (ch < 'a' || ch > 'z')
-                && (ch < 'A' || ch > 'Z');
     }
 }

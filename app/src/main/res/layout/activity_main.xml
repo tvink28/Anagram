@@ -34,7 +34,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="115dp"
         android:background="@drawable/input_bg"
         android:fontFamily="@font/poppins"
         android:gravity="center"
@@ -42,10 +41,12 @@
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.135"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.21"
         app:layout_constraintWidth_percent="0.85" />
 
     <EditText
@@ -53,7 +54,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@+id/text_for_anagram"
-        android:layout_marginTop="15dp"
         android:background="@drawable/input_bg"
         android:fontFamily="@font/poppins"
         android:gravity="center"
@@ -61,10 +61,12 @@
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.135"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_for_anagram"
+        app:layout_constraintVertical_bias="0.033"
         app:layout_constraintWidth_percent="0.85" />
 
     <TextView
