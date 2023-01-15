@@ -23,39 +23,73 @@ public class Reverse extends MainActivity {
         char[] charsText = text.toCharArray();
         int l = 0;
 
-        if (filter.isEmpty()) {
-            while (l < r) {
-                if (!Character.isLetter(charsText[l])) {
-                    l++;
-                } else if (!Character.isLetter(charsText[r])) {
-                    r--;
-                } else {
-                    char temp = charsText[l];
-                    charsText[l] = charsText[r];
-                    charsText[r] = temp;
-                    l++;
-                    r--;
-                }
-            }
-        } else {
-            while (l < r) {
-                if (isFilter(filter, text.charAt(l))) {
-                    l++;
-                } else if (isFilter(filter, text.charAt(r))) {
-                    r--;
-                } else {
-                    char temp = charsText[l];
-                    charsText[l] = charsText[r];
-                    charsText[r] = temp;
-                    l++;
-                    r--;
-                }
+        while (l < r) {
+            if (isFilter(filter, text.charAt(l))) {
+                l++;
+            } else if (isFilter(filter, text.charAt(r))) {
+                r--;
+            } else {
+                char temp = charsText[l];
+                charsText[l] = charsText[r];
+                charsText[r] = temp;
+                l++;
+                r--;
             }
         }
+
+
         return new String(charsText);
     }
 
+
     private static boolean isFilter(String filter, char ch) {
-        return (filter.indexOf(ch) != -1);
+        if (filter.isEmpty()) {
+            return !Character.isLetter(ch);
+        } else {
+            return filter.indexOf(ch) != -1;
+        }
     }
 }
+
+
+//    public static String filter(String text, String filter) {
+//
+//        int r = text.length() - 1;
+//        char[] charsText = text.toCharArray();
+//        int l = 0;
+//
+//        if (filter.isEmpty()) {
+//            while (l < r) {
+//                if (!Character.isLetter(charsText[l])) {
+//                    l++;
+//                } else if (!Character.isLetter(charsText[r])) {
+//                    r--;
+//                } else {
+//                    char temp = charsText[l];
+//                    charsText[l] = charsText[r];
+//                    charsText[r] = temp;
+//                    l++;
+//                    r--;
+//                }
+//            }
+//        } else {
+//            while (l < r) {
+//                if (isFilter(filter, text.charAt(l))) {
+//                    l++;
+//                } else if (isFilter(filter, text.charAt(r))) {
+//                    r--;
+//                } else {
+//                    char temp = charsText[l];
+//                    charsText[l] = charsText[r];
+//                    charsText[r] = temp;
+//                    l++;
+//                    r--;
+//                }
+//            }
+//        }
+//        return new String(charsText);
+//    }
+//
+//    private static boolean isFilter(String filter, char ch) {
+//        return (filter.indexOf(ch) != -1);
+//    }

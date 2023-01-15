@@ -9,31 +9,11 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TextWatcher {
 
     private EditText textForAnagram, filterAnagram;
     private TextView viewAnagram;
 
-    private final TextWatcher textWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            String text = textForAnagram.getText().toString().trim();
-            String filter = filterAnagram.getText().toString().trim();
-            viewAnagram.setText(Reverse.makeAnagram(text, filter));
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-
-
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +27,24 @@ public class MainActivity extends AppCompatActivity {
         filterAnagram = findViewById(R.id.filter_anagram);
         viewAnagram = findViewById(R.id.text_anagram);
 
-        textForAnagram.addTextChangedListener(textWatcher);
+        textForAnagram.addTextChangedListener(this);
+        filterAnagram.addTextChangedListener(this);
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        String text = textForAnagram.getText().toString().trim();
+        String filter = filterAnagram.getText().toString().trim();
+        viewAnagram.setText(Reverse.makeAnagram(text, filter));
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
     }
 }
