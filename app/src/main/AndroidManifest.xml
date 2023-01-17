@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/icon_for_app_task1"
-        android:label=""
-        android:roundIcon="@drawable/icon_for_app_task1"
+        android:icon="@mipmap/ic_launcher_task_1"
+        android:label="Task 1"
+        android:roundIcon="@mipmap/ic_launcher_task_1_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tast1"
         tools:targetApi="31" >
