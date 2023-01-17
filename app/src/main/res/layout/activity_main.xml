@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/curvedtoolbar"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/text_for_anagram"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/toolbar"
+        android:background="@drawable/input_bg"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:hint="@string/text_for_anagram_hint"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.135"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.21"
+        app:layout_constraintWidth_percent="0.85" />
+
+    <EditText
+        android:id="@+id/filter_anagram"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/text_for_anagram"
+        android:background="@drawable/input_bg"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:hint="@string/filter_anagram_hint"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.135"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_for_anagram"
+        app:layout_constraintVertical_bias="0.033"
+        app:layout_constraintWidth_percent="0.85" />
+
+    <TextView
+        android:id="@+id/text_anagram"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/filter_anagram"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center_horizontal"
+        android:hint="@string/anagram_result"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filter_anagram"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintWidth_percent="0.85" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
