@@ -8,45 +8,34 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.List;
-
-@RunWith(Parameterized.class)
 public class ReverseTest {
 
-    String expected;
-    String text;
-    String filter;
+    ObjectsTest[] test = new ObjectsTest[3];
 
-    public ReverseTest(String expected, String text, String filter) {
-        this.expected = expected;
-        this.text = text;
-        this.filter = filter;
+    public void str(ObjectsTest[] test) {
+        test[0] = new ObjectsTest("dexdnimoF oocl 7/42", "Foxminded cool 24/7", "xl");
+        test[1] = new ObjectsTest("dcba hgfe", "abcd efgh", "xl");
+        test[2] = new ObjectsTest("dcb1a hgfle", "a1bcd efglh", "xl");
     }
 
-    @Parameterized.Parameters
-    public static List<Object[]> str() {
 
-        return Arrays.asList(new Object[][]{
-                {"dexdnimoF oocl 7/42", "Foxminded cool 24/7", "xl"},
-                {"dcba hgfe", "abcd efgh", "xl"},
-                {"dcb1a hgfle", "a1bcd efglh", "xl"}
-        });
+    @Test
+    public void TestMakeAnagram() {
+        for (ObjectsTest objectsTest : test) {
+            assertEquals(objectsTest.expected, Reverse.makeAnagram(objectsTest.text, objectsTest.filter));
+        }
     }
 
     @Test
-    public void makeAnagram() {
-        assertEquals(expected, Reverse.makeAnagram(text, filter));
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void makeAnagramNullFilter() {
-        assertEquals("dednimxoF looc 24/7", Reverse.makeAnagram("Foxminded cool 24/7", null));
-        assertEquals("dcba hgfe", Reverse.makeAnagram("abcd efgh", null));
+    public void TestMakeAnagramNullFilter() {
+        assertEquals("dednimxoF looc 24/7", Reverse.makeAnagram("Foxminded cool 24/7", ""));
+        assertEquals("dcba hgfe", Reverse.makeAnagram("abcd efgh", ""));
         assertEquals("d1cba hgf!e", Reverse.makeAnagram("a1bcd efg!h", ""));
     }
 
-    @Test(expected = NullPointerException.class)
-    public void makeAnagramIsEmpty() {
-        assertEquals("", Reverse.makeAnagram(null, "xl"));
+    @Test
+    public void TestMakeAnagramIsEmpty() {
+        assertEquals("", Reverse.makeAnagram("", "xl"));
     }
 }
 
