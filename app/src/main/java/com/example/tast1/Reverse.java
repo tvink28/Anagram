@@ -5,6 +5,7 @@ public class Reverse extends MainActivity {
 
     public static String makeAnagram(String text, String filter) {
 
+        if (text == null) return "";
 
         String[] words = text.split("\\s");
         StringBuilder makeAnagram = new StringBuilder();
@@ -43,7 +44,7 @@ public class Reverse extends MainActivity {
 
 
     private static boolean isFilter(String filter, char ch) {
-        if (filter.isEmpty()) {
+        if (filter == null || filter.isEmpty()) {
             return !Character.isLetter(ch);
         } else {
             return filter.indexOf(ch) != -1;

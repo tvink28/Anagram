@@ -3,55 +3,65 @@ package com.example.tast1;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.List;
 public class ReverseTest {
 
-    ObjectsTest[] test = new ObjectsTest[3];
 
-    public void str(ObjectsTest[] test) {
-        test[0] = new ObjectsTest("dexdnimoF oocl 7/42", "Foxminded cool 24/7", "xl");
-        test[1] = new ObjectsTest("dcba hgfe", "abcd efgh", "xl");
-        test[2] = new ObjectsTest("dcb1a hgfle", "a1bcd efglh", "xl");
-    }
+    private final TestObjects[] test = new TestObjects[]{
+            new TestObjects("dexdnimoF oocl 7/42", "Foxminded cool 24/7", "xl"),
+            new TestObjects("dcba hgfe", "abcd efgh", "xl"),
+            new TestObjects("dcb1a hgfle", "a1bcd efglh", "xl"),
+            new TestObjects("qw@!321e qCBAqq", "qwe123!@ qABCqq", "qw"),
+            new TestObjects("y2trweq31 !q2", "123qwerty q!2", "e2"),
+    };
+
+    private final TestObjects[] nullFilter = new TestObjects[] {
+            new TestObjects("dednimxoF looc 24/7","Foxminded cool 24/7", null),
+            new TestObjects("dcba hgfe","abcd efgh", null),
+            new TestObjects("d1cba hgf!e","a1bcd efg!h", null),
+    };
+
+    private final TestObjects[] nullText = new TestObjects[] {
+            new TestObjects("",null, "xl"),
+            new TestObjects("",null, "!2qw"),
+            new TestObjects("",null, ""),
+    };
 
 
     @Test
     public void TestMakeAnagram() {
-        for (ObjectsTest objectsTest : test) {
-            assertEquals(objectsTest.expected, Reverse.makeAnagram(objectsTest.text, objectsTest.filter));
+        for (TestObjects testObjects : test) {
+            assertEquals(testObjects.expected, Reverse.makeAnagram(testObjects.text, testObjects.filter));
         }
     }
 
     @Test
     public void TestMakeAnagramNullFilter() {
-        assertEquals("dednimxoF looc 24/7", Reverse.makeAnagram("Foxminded cool 24/7", ""));
-        assertEquals("dcba hgfe", Reverse.makeAnagram("abcd efgh", ""));
-        assertEquals("d1cba hgf!e", Reverse.makeAnagram("a1bcd efg!h", ""));
+        for (TestObjects testObjects : nullFilter) {
+            assertEquals(testObjects.expected, Reverse.makeAnagram(testObjects.text, testObjects.filter));
+        }
     }
 
     @Test
-    public void TestMakeAnagramIsEmpty() {
-        assertEquals("", Reverse.makeAnagram("", "xl"));
+    public void TestMakeAnagramNullText() {
+        for (TestObjects testObjects : nullText) {
+            assertEquals(testObjects.expected, Reverse.makeAnagram(testObjects.text, testObjects.filter));
+        }
     }
+
+//    @Test
+//    public void TestMakeAnagramNullFilter() {
+//        assertEquals("dednimxoF looc 24/7", Reverse.makeAnagram("Foxminded cool 24/7", null));
+//        assertEquals("dcba hgfe", Reverse.makeAnagram("abcd efgh", null));
+//        assertEquals("d1cba hgf!e", Reverse.makeAnagram("a1bcd efg!h", null));
+//        assertEquals("ytrewq123 !@CBA", Reverse.makeAnagram("qwerty123 !@ABC", null));
+//    }
+//
+//    @Test
+//    public void TestMakeAnagramIsEmpty() {
+//        assertEquals("", Reverse.makeAnagram(null, "xl"));
+//        assertEquals("", Reverse.makeAnagram(null, "!2qw"));
+//        assertEquals("", Reverse.makeAnagram(null, ""));
+//    }
 }
 
-
-//    public void makeAnagram() {
-//
-//        assertEquals("dednimxoF looc 24/7", Reverse.makeAnagram("Foxminded cool 24/7",""));
-//        assertEquals("dcba hgfe", Reverse.makeAnagram("abcd efgh",""));
-//        assertEquals("d1cba hgf!e", Reverse.makeAnagram("a1bcd efg!h",""));
-//
-//        assertEquals("dexdnimoF oocl 7/42", Reverse.makeAnagram("Foxminded cool 24/7","xl"));
-//        assertEquals("dcba hgfe", Reverse.makeAnagram("abcd efgh","xl"));
-//        assertEquals("dcb1a hgfle", Reverse.makeAnagram("a1bcd efglh","xl"));
-//        assertEquals("dcb1a hgfle", Reverse.makeAnagram("a1bcd efglh","x l"));
-// String[] expected = new String[]{"dednimxoF looc 24/7", "dcba hgfe", "d1cba hgf!e", "dexdnimoF oocl 7/42", "dcba hgfe", "dcb1a hgfle"};
-//    String[] text = new String[]{"Foxminded cool 24/7", "abcd efgh", "a1bcd efg!h", "Foxminded cool 24/7", "abcd efgh", "a1bcd efglh"};
-//
-//        assertEquals("", Reverse.makeAnagram("","xl"));
-//    }
