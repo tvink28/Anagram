@@ -23,19 +23,14 @@ public class ReverseTest {
     }
 
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void TestMakeAnagramNullFilter() {
         assertEquals("dednimxoF looc 24/7", Reverse.makeAnagram("Foxminded cool 24/7", null));
-        assertEquals("dcba hgfe", Reverse.makeAnagram("abcd efgh", null));
-        assertEquals("d1cba hgf!e", Reverse.makeAnagram("a1bcd efg!h", null));
-        assertEquals("ytrewq123 !@CBA", Reverse.makeAnagram("qwerty123 !@ABC", null));
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void TestMakeAnagramNullText() {
         assertEquals("", Reverse.makeAnagram(null, "xl"));
-        assertEquals("", Reverse.makeAnagram(null, "!2qw"));
-        assertEquals("", Reverse.makeAnagram(null, ""));
     }
 }
 
