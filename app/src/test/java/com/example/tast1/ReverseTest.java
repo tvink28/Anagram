@@ -20,7 +20,7 @@ public class ReverseTest {
 
 
     @Test
-    public void TestMakeAnagram() {
+    public void testMakeAnagram() {
         for (TestObject testObject : test) {
             assertEquals(testObject.expected, Reverse.makeAnagram(testObject.text, testObject.filter));
         }
@@ -28,12 +28,12 @@ public class ReverseTest {
 
 
     @Test(expected = NullPointerException.class)
-    public void TestMakeAnagramNullFilter() {
+    public void testMakeAnagramNullFilter() {
         assertEquals("dednimxoF looc 24/7", Reverse.makeAnagram("Foxminded cool 24/7", null));
     }
 
     @Test(expected = NullPointerException.class)
-    public void TestMakeAnagramNullText() {
+    public void testMakeAnagramNullText() {
         assertEquals("", Reverse.makeAnagram(null, "xl"));
     }
 }
