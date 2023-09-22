@@ -5,7 +5,6 @@ public class Reverse extends MainActivity {
 
     public static String makeAnagram(String text, String filter) {
 
-
         String[] words = text.split("\\s");
         StringBuilder makeAnagram = new StringBuilder();
         for (String word : words) {
@@ -13,7 +12,6 @@ public class Reverse extends MainActivity {
         }
 
         return makeAnagram.toString().trim();
-
     }
 
 
@@ -36,8 +34,6 @@ public class Reverse extends MainActivity {
                 r--;
             }
         }
-
-
         return new String(charsText);
     }
 
