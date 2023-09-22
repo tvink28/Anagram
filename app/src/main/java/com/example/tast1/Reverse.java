@@ -12,7 +12,6 @@ public class Reverse extends MainActivity {
         }
 
         return makeAnagram.toString().trim();
-
     }
 
 
@@ -35,8 +34,6 @@ public class Reverse extends MainActivity {
                 r--;
             }
         }
-
-
         return new String(charsText);
     }
 
